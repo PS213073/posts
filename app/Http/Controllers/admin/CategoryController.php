@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'name' => request()->input('name')
         ]);
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('categories.index');
 
     }
 }

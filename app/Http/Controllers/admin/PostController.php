@@ -41,7 +41,7 @@ class PostController extends Controller
             'post_text' => $request->input('post_text'),
             'category_id' => $request->input('category_id'),
         ]);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -71,7 +71,7 @@ class PostController extends Controller
             'post_text' => $request->input('post_text'),
             'category_id' => $request->input('category_id'),
         ]);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -80,6 +80,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('posts.index');
     }
 }

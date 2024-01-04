@@ -80,7 +80,7 @@
                             <div class="w-full lg:w-1/2 px-4">
                                 <!-- Blog post-->
                                 <div class="card mb-16">
-                                    <a href="{{ route('posts.show', $post->id) }}"><img class="w-full h-64 object-cover"
+                                    <a href="{{ route('posts.show', $post->id) }}"><img class="w-full h-64 object-cover rounded-t-[10px]"
                                             src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                     <div class="p-6">
                                         <div class="text-gray-600">{{ $post->created_at }}</div>
