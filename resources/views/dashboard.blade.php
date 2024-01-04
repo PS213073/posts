@@ -11,7 +11,7 @@
     <div class="py-12"> --}}
 
 
-        {{-- <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    {{-- <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="overflow-hidden rounded-lg">
                 <div class="container mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -62,56 +62,61 @@
 
         </div> --}}
 
-        <header class="py-2 bg-gray-200 border-b-2 border-gray-300 mb-16">
-            <div class="container mx-auto">
-                <div class="text-center my-10">
-                    <h1 class="font-semibold text-3xl">Welcome to Blog Home!</h1>
-                </div>
+    <header class="py-2 bg-gray-200 border-b-2 border-gray-300 mb-16">
+        <div class="container mx-auto">
+            <div class="text-center my-10">
+                <h1 class="font-semibold text-3xl">Welcome to Blog Home!</h1>
             </div>
-        </header>
-        <!-- Page content-->
-        <div class="container mx-auto px-10">
-            <div class="flex flex-wrap -mx-4">
-                <!-- Blog entries-->
-                <div class="w-full lg:w-2/3 px-4">
-                    <!-- Nested row for non-featured blog posts-->
-                    <div class="flex flex-wrap -mx-4">
-                        @foreach ($posts as $post)
-                            <div class="w-full lg:w-1/2 px-4">
-                                <!-- Blog post-->
-                                <div class="card mb-16">
-                                    <a href="{{ route('posts.show', $post->id) }}"><img class="w-full h-64 object-cover rounded-t-[10px]"
-                                            src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                    <div class="p-6">
-                                        <div class="text-gray-600">{{ $post->created_at }}</div>
-                                        <h2 class="font-semibold text-2xl">{{ $post->title }}</h2>
-                                        <p class="text-gray-700">{{ $post->post_text }}</p>
-                                        <a class="text-blue-500 hover:text-blue-800" href="#!">Read more →</a>
-                                    </div>
+        </div>
+    </header>
+    <!-- Page content-->
+    <div class="container mx-auto px-10">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Blog entries-->
+            <div class="w-full lg:w-2/3 px-4">
+                <!-- Nested row for non-featured blog posts-->
+                <div class="flex flex-wrap -mx-4">
+                    @foreach ($posts as $post)
+                        <div class="w-full lg:w-1/2 px-4">
+                            <!-- Blog post-->
+                            <div class="card mb-16">
+                                <a href="{{ route('posts.show', $post->id) }}"><img
+                                        class="w-full h-64 object-cover rounded-t-[10px]"
+                                        src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <div class="p-6">
+                                    {{-- <div class="text-gray-600">{{ $post->created_at }}</div>
+                                         --}}
+                                         {{ $post->created_at ? $post->created_at->diffForHumans() : 'Date not available' }}
+                                    <h2 class="font-semibold text-2xl">{{ $post->title }}</h2>
+                                    <p class="text-gray-700">{{ $post->post_text }}</p>
+                                    <a class="text-blue-500 hover:text-blue-800" href="#!">Read more →</a>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
-                <!-- Side widgets-->
-                <div class="w-full lg:w-1/3 px-4">
-                    <div class="card mb-16">
-                        <div class="px-6 py-4 font-semibold text-xl border-b-2 border-gray-300">Categories</div>
-                        <div class="p-6">
-                            <div class="flex flex-wrap -mx-4">
-                                <div class="w-full px-4">
-                                    <ul class="list-none mb-0">
-                                        @foreach ($categories as $category)
-                                            <li><a class="text-blue-500 hover:text-blue-800" href="{{ route('dashboard.index') }}?category_id={{ $category->id }}">{{ $category->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+            </div>
+            <!-- Side widgets-->
+            <div class="w-full lg:w-1/3 px-4">
+                <div class="card mb-16">
+                    <div class="px-6 py-4 font-semibold text-xl border-b-2 border-gray-300">Categories</div>
+                    <div class="p-6">
+                        <div class="flex flex-wrap -mx-4">
+                            <div class="w-full px-4">
+                                <ul class="list-none mb-0">
+                                    @foreach ($categories as $category)
+                                        <li><a class="text-blue-500 hover:text-blue-800"
+                                                href="{{ route('dashboard.index') }}?category_id={{ $category->id }}">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
