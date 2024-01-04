@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use App\Models\Post;
@@ -16,7 +17,7 @@ class PostController extends Controller
     {
         // $posts = Post::all();
         $posts = Post::with('category')->get();
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -25,7 +26,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -40,7 +41,7 @@ class PostController extends Controller
             'post_text' => $request->input('post_text'),
             'category_id' => $request->input('category_id'),
         ]);
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -70,7 +71,7 @@ class PostController extends Controller
             'post_text' => $request->input('post_text'),
             'category_id' => $request->input('category_id'),
         ]);
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -79,6 +80,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 }

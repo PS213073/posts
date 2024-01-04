@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
