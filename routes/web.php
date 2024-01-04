@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Admin routes
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::resource('categories', CategoryController::class)
         ->middleware(['is_admin',]);
@@ -31,7 +31,14 @@ Route::group(['middleware' => ['auth']], function () {
         ->middleware(['is_admin',]);
 });
 
+// User routes
+// Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+// Route::view('/about', 'about')->name('about');
+// Route::view('/contact', 'contact')->name('contact');
 
+// Route::prefix('posts')->group(function () {
+//     Route::get('{post}', [PostController::class, 'show'])->name('show');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
